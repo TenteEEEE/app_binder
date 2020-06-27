@@ -12,7 +12,7 @@ Calculatorとnotepad(C:\Windows\System32\notepad.exe)をバインディングす
 ![1](https://user-images.githubusercontent.com/9051681/85918770-96a69880-b8a0-11ea-90f7-20f7c674db5c.gif)
 
 ### ついでにExcelも開きたい
-Excel.exeとcalc.exe(C:\Windows\System32\calc.exe)のバインディングを追加する
+Excel.exeとCalculatorのバインディングを追加する
 ![2](https://user-images.githubusercontent.com/9051681/85918803-cfdf0880-b8a0-11ea-861b-5ea2f15793f2.gif)
 
 ### あるアプリは必ず存在してほしい(永続化)
@@ -47,7 +47,7 @@ Bind Calculator.exe and notepad.exe
 ![1](https://user-images.githubusercontent.com/9051681/85918770-96a69880-b8a0-11ea-90f7-20f7c674db5c.gif)
 
 ### I need Excel too
-We just bind a notepad.exe and Excel.exe
+We just bind a Calculator and Excel.exe
 ![2](https://user-images.githubusercontent.com/9051681/85918803-cfdf0880-b8a0-11ea-861b-5ea2f15793f2.gif)
 
 ### An application must be persistent
