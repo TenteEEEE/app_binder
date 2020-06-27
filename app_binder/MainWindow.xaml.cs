@@ -70,6 +70,7 @@ namespace AppBinder
         {
             if (configs.Count < 1 || dataGrid_config.SelectedIndex < 0) return;
             configs[dataGrid_config.SelectedIndex].kill_config();
+            configs[dataGrid_config.SelectedIndex].Dispose();
             configs.Remove(configs[dataGrid_config.SelectedIndex]);
         }
 
@@ -113,8 +114,10 @@ namespace AppBinder
     }
 
     //[MessagePackObject(keyAsPropertyName: true)]
-    public class ProcessChecker
+    public class ProcessChecker : IDisposable
     {
+        private bool _disposed = false;
+
         public Process[] plist;
         public DispatcherTimer timer;
         public Action<int> cb_up;
@@ -165,6 +168,35 @@ namespace AppBinder
         {
             timer.Stop();
         }
+
+        /// <summary>
+        /// Releases the unmanaged resources and disposes of unmanaged resources used by the <see cref="ProcessChecker"/>.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        /// <summary>
+        /// Releases the unmanaged resources used by the <see cref="ProcessChecker"/> and optionally disposes of the managed resources.
+        /// </summary>
+        /// <param name="disposing">true to release both managed and unmanaged resources; false to releases only unmanaged resources.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                if (disposing)
+                {
+                    //dispose managed resources
+                    foreach (var p in plist)
+                    {
+                        p.Dispose();
+                    }
+                }
+
+                _disposed = true;
+            }
+        }
     }
     [MessagePackObject(keyAsPropertyName: true)]
     public struct serialize_objects
@@ -178,8 +210,10 @@ namespace AppBinder
         public RESTART_POLICY restarter;
     }
     //[MessagePackObject(keyAsPropertyName: true)]
-    public class ProcessRunner : INotifyPropertyChanged
+    public class ProcessRunner : INotifyPropertyChanged, IDisposable
     {
+        private bool _disposed = false;
+
         public event PropertyChangedEventHandler PropertyChanged;
         public ProcessChecker PC = new ProcessChecker("");
         // Binding source
@@ -308,6 +342,36 @@ namespace AppBinder
             sobj.args = binding_process.StartInfo.Arguments;
             sobj.restarter = restarter;
             return sobj;
+        }
+
+        /// <summary>
+        /// Releases the unmanaged resources and disposes of unmanaged resources used by the <see cref="ProcessRunner"/>.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        /// <summary>
+        /// Releases the unmanaged resources used by the <see cref="ProcessRunner"/> and optionally disposes of the managed resources.
+        /// </summary>
+        /// <param name="disposing">true to release both managed and unmanaged resources; false to releases only unmanaged resources.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                if (disposing)
+                {
+                    //dispose managed resources
+                    is_enable?.Dispose();
+                    config_name?.Dispose();
+                    status?.Dispose();
+                    binding_process?.Dispose();
+                    PC?.Dispose();
+                }
+
+                _disposed = true;
+            }
         }
     }
 }
