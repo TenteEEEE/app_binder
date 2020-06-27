@@ -8,15 +8,15 @@
         mc:Ignorable="d"
         Title="AppBinder" Height="527.333" Width="408.509" ResizeMode="CanMinimize" Closing="MetroWindow_Closing" StateChanged="c_StateChanged" Icon="appbinder.png">
     <Grid>
-        <DataGrid x:Name="dataGrid_config"  AutoGenerateColumns="False" ItemsSource="{Binding}" Margin="0,47,0.334,0" CanUserAddRows="False" CanUserDeleteRows="False" ColumnWidth="Auto" CanUserSortColumns="False" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Grid.ColumnSpan="2">
+        <DataGrid x:Name="dataGrid_config"  AutoGenerateColumns="False" ItemsSource="{Binding}" Margin="0,47,0.334,0" CanUserAddRows="False" CanUserDeleteRows="False" ColumnWidth="Auto" CanUserSortColumns="False" VerticalScrollBarVisibility="Visible" IsReadOnly="True" Grid.ColumnSpan="2" TabIndex="30">
             <DataGrid.Columns>
                 <!--<DataGridCheckBoxColumn Header="Enable" Binding="{Binding is_enable.Value}" IsReadOnly="False" />-->
                 <DataGridTextColumn Header="ConfigName" Binding="{Binding config_name.Value}" />
                 <DataGridTextColumn Header="Status" Binding="{Binding status.Value}" Width="200"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="button_add" Content="Add" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="button_add_Click"/>
-        <Button x:Name="button_edit" Content="Edit" HorizontalAlignment="Left" Margin="99,10,0,0" VerticalAlignment="Top" Width="75" Click="button_edit_Click"/>
-        <Button x:Name="button_delete" Content="Delete" HorizontalAlignment="Left" Margin="318,10,0,0" VerticalAlignment="Top" Width="75" Click="button_delete_Click"/>
+        <Button x:Name="button_add" Content="Add" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="button_add_Click" TabIndex="10"/>
+        <Button x:Name="button_edit" Content="Edit" HorizontalAlignment="Left" Margin="99,10,0,0" VerticalAlignment="Top" Width="75" Click="button_edit_Click" TabIndex="20"/>
+        <Button x:Name="button_delete" Content="Delete" HorizontalAlignment="Left" Margin="318,10,0,0" VerticalAlignment="Top" Width="75" Click="button_delete_Click" TabIndex="40"/>
     </Grid>
 </mah:MetroWindow>
