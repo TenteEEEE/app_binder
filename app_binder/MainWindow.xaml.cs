@@ -234,6 +234,7 @@ namespace AppBinder
         public void load_config(serialize_objects obj)
         {
             setup(obj.config_name, obj.trigger_process, obj.bind_process, obj.args, obj.restarter);
+            is_enable.Value = true;
         }
 
         public void trigger_up(int pnum)
@@ -278,7 +279,7 @@ namespace AppBinder
             if (binding_process.ExitCode != 0)
             {
                 status.Value = $"Fault Detected:{binding_process.ExitCode}";
-                if (is_enable.Value == true && (restarter == RESTART_POLICY.ON_FAILUER || restarter == RESTART_POLICY.ALWAYS))
+                if (is_enable.Value == true && (restarter == RESTART_POLICY.ON_FAILUER || restarter == RESTART_POLICY.ALWAYS) && PC.get_number_of_process() != 0)
                 {
                     start();
                 }
