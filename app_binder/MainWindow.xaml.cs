@@ -185,17 +185,19 @@ namespace AppBinder
         {
             if (_disposed)
             {
-                if (disposing)
-                {
-                    //dispose managed resources
-                    foreach (var p in plist)
-                    {
-                        p.Dispose();
-                    }
-                }
-
-                _disposed = true;
+                return;
             }
+
+            if (disposing)
+            {
+                //dispose managed resources
+                foreach (var p in plist)
+                {
+                    p?.Dispose();
+                }
+            }
+
+            _disposed = true;
         }
     }
     [MessagePackObject(keyAsPropertyName: true)]
@@ -360,18 +362,20 @@ namespace AppBinder
         {
             if (_disposed)
             {
-                if (disposing)
-                {
-                    //dispose managed resources
-                    is_enable?.Dispose();
-                    config_name?.Dispose();
-                    status?.Dispose();
-                    binding_process?.Dispose();
-                    PC?.Dispose();
-                }
-
-                _disposed = true;
+                return;
             }
+
+            if (disposing)
+            {
+                //dispose managed resources
+                is_enable?.Dispose();
+                config_name?.Dispose();
+                status?.Dispose();
+                binding_process?.Dispose();
+                PC?.Dispose();
+            }
+
+            _disposed = true;
         }
     }
 }
