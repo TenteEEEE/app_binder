@@ -5,26 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppBinder"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="AppBinder.config_window"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="AppBinder.config_window"
         mc:Ignorable="d"
-        Title="Configulation" Height="256.431" Width="483.806" ResizeMode="NoResize">
+        Title="Configulation" Height="272.431" Width="483.806" ResizeMode="NoResize">
     <Grid>
 
-        <Label x:Name="label_confname" Content="Config Name*:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_triggername" Content="Trigger  EXE/Process:" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_startname" Content="Binding EXE:" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_args" Content="Arguments:" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy2" Content="Restart Policy:" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_confname" Content="Config Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="27"/>
+        <Label x:Name="label_triggername" Content="Trigger  EXE/Process:" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Height="27"/>
+        <Label x:Name="label_startname" Content="Binding EXE:" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Height="27"/>
+        <Label x:Name="label_args" Content="Arguments:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Height="27"/>
+        <Label x:Name="label_delay" Content="Startup Delay:" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Height="27"/>
+        <Label x:Name="label_sec" Content="sec" HorizontalAlignment="Left" Margin="198,135,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_restart" Content="Restart Policy:" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" Height="27"/>
         <TextBox x:Name="textBox_name" HorizontalAlignment="Left" Height="27" Margin="133,7,0,0" VerticalAlignment="Top" Width="335" Text="Config" TabIndex="10"/>
-        <TextBox x:Name="textBox_trigger" HorizontalAlignment="Left" Height="27" Margin="133,42,0,0" VerticalAlignment="Top" Width="233" AllowDrop="True" TabIndex="20"/>
-        <TextBox x:Name="textBox_start" HorizontalAlignment="Left" Height="27" Margin="133,79,0,0" VerticalAlignment="Top" Width="233" TabIndex="40"/>
-        <TextBox x:Name="textBox_args" HorizontalAlignment="Left" Height="27" Margin="133,116,0,0" VerticalAlignment="Top" Width="335" TabIndex="60"/>
-        <Button x:Name="button_triggerbrowse" Content="Browse" HorizontalAlignment="Left" Margin="382,42,0,0" VerticalAlignment="Top" Width="86" Click="button_triggerbrowse_Click" Height="26" TabIndex="30"/>
-        <Button x:Name="button_startbrowse" Content="Browse" HorizontalAlignment="Left" Margin="382,78,0,0" VerticalAlignment="Top" Width="86" Click="button_startbrowse_Click" Height="28" TabIndex="50"/>
-        <RadioButton x:Name="radioButton_never" Content="Never" HorizontalAlignment="Left" Margin="134,157,0,0" VerticalAlignment="Top" GroupName="restart_mode" IsChecked="True" TabIndex="70"/>
-        <RadioButton x:Name="radioButton_failure" Content="On Failure" HorizontalAlignment="Left" Margin="209,157,0,0" VerticalAlignment="Top" GroupName="restart_mode" TabIndex="80"/>
-        <RadioButton x:Name="radioButton_always" Content="Always" HorizontalAlignment="Left" Margin="308,157,0,0" VerticalAlignment="Top" GroupName="restart_mode" TabIndex="90"/>
-        <Button x:Name="button_done" Content="Done" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Width="458" Click="button_done_Click" Height="32" ScrollViewer.VerticalScrollBarVisibility="Disabled" TabIndex="100"/>
-        <Button x:Name="button_modify" Content="Modify" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Width="458" Height="32" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Hidden" Click="button_modify_Click" TabIndex="100"/>
+        <TextBox x:Name="textBox_trigger" HorizontalAlignment="Left" Height="27" Margin="133,39,0,0" VerticalAlignment="Top" Width="233" AllowDrop="True" TabIndex="20"/>
+        <TextBox x:Name="textBox_start" HorizontalAlignment="Left" Height="27" Margin="133,71,0,0" VerticalAlignment="Top" Width="233" TabIndex="40"/>
+        <TextBox x:Name="textBox_args" HorizontalAlignment="Left" Height="27" Margin="133,103,0,0" VerticalAlignment="Top" Width="335" TabIndex="60"/>
+        <TextBox x:Name="textBox_delay" HorizontalAlignment="Left" Height="23" Margin="133,136,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="65" TextAlignment="Right" TabIndex="70"/>
+        <Button x:Name="button_triggerbrowse" Content="Browse" HorizontalAlignment="Left" Margin="382,39,0,0" VerticalAlignment="Top" Width="86" Click="button_triggerbrowse_Click" Height="26" TabIndex="30"/>
+        <Button x:Name="button_startbrowse" Content="Browse" HorizontalAlignment="Left" Margin="382,70,0,0" VerticalAlignment="Top" Width="86" Click="button_startbrowse_Click" Height="28" TabIndex="50"/>
+        <RadioButton x:Name="radioButton_never" Content="Never" HorizontalAlignment="Left" Margin="134,169,0,0" VerticalAlignment="Top" GroupName="restart_mode" IsChecked="True" TabIndex="80"/>
+        <RadioButton x:Name="radioButton_failure" Content="On Failure" HorizontalAlignment="Left" Margin="209,169,0,0" VerticalAlignment="Top" GroupName="restart_mode" TabIndex="85"/>
+        <RadioButton x:Name="radioButton_always" Content="Always" HorizontalAlignment="Left" Margin="308,169,0,0" VerticalAlignment="Top" GroupName="restart_mode" TabIndex="90"/>
+        <Button x:Name="button_done" Content="Done" HorizontalAlignment="Left" Margin="10,199,0,0" VerticalAlignment="Top" Width="458" Click="button_done_Click" Height="32" ScrollViewer.VerticalScrollBarVisibility="Disabled" TabIndex="100"/>
+        <Button x:Name="button_modify" Content="Modify" HorizontalAlignment="Left" Margin="10,199,0,0" VerticalAlignment="Top" Width="458" Height="32" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Hidden" Click="button_modify_Click" TabIndex="100"/>
     </Grid>
 </mah:MetroWindow>

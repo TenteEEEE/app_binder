@@ -1,20 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using Microsoft.Win32;
 using MahApps.Metro.Controls;
-using System.IO;
-using System.Diagnostics;
 
 namespace AppBinder
 {
@@ -35,6 +21,7 @@ namespace AppBinder
             textBox_trigger.Text = obj.trigger_process;
             textBox_start.Text = obj.bind_process;
             textBox_args.Text = obj.args;
+            textBox_delay.Text = (obj.start_delay / 1000).ToString();
             set_restart_radio_button(obj.restarter);
             config_index = index;
         }
@@ -82,7 +69,7 @@ namespace AppBinder
         private void button_done_Click(object sender, RoutedEventArgs e)
         {
             var config = new ProcessRunner();
-            config.setup(textBox_name.Text, textBox_trigger.Text, textBox_start.Text, textBox_args.Text, check_restart_policy());
+            config.setup(textBox_name.Text, textBox_trigger.Text, textBox_start.Text, textBox_args.Text, textBox_delay.Text, check_restart_policy());
             config.is_enable.Value = true;
             ((MainWindow)Application.Current.MainWindow).configs.Add(config);
             this.Close();
@@ -91,9 +78,9 @@ namespace AppBinder
         private void button_modify_Click(object sender, RoutedEventArgs e)
         {
             var config = new ProcessRunner();
-            config.setup(textBox_name.Text, textBox_trigger.Text, textBox_start.Text, textBox_args.Text, check_restart_policy());
+            config.setup(textBox_name.Text, textBox_trigger.Text, textBox_start.Text, textBox_args.Text, textBox_delay.Text, check_restart_policy());
             config.is_enable.Value = true;
-            ((MainWindow)Application.Current.MainWindow).configs[config_index].kill_config();
+            ((MainWindow)Application.Current.MainWindow).configs[config_index].Dispose();
             ((MainWindow)Application.Current.MainWindow).configs[config_index] = config;
             this.Close();
         }
