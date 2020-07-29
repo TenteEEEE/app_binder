@@ -31,6 +31,20 @@ namespace AppBinder
 
             }
             dataGrid_config.ItemsSource = configs;
+            this.Loaded += minimized_startup;
+        }
+
+        private void minimized_startup(object sender, RoutedEventArgs e)
+        {
+            string[] args = Environment.GetCommandLineArgs();
+            foreach (string arg in args)
+            {
+                if (arg == "-m" || arg == "--minimum")
+                {
+                    this.WindowState = WindowState.Minimized;
+                }
+            }
+            this.Loaded -= minimized_startup;
         }
 
         private void button_add_Click(object sender, RoutedEventArgs e)
