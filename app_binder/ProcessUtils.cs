@@ -200,10 +200,22 @@ namespace AppBinder
         }
         private void trigger_down(int pnum)
         {
-            if (pnum == 0 && status.Value != "Exited")
+            if (pnum == 0 && status.Value == "Running")
             {
-                binding_process.Kill();
-                status.Value = "Exited";
+                try
+                {
+                    binding_process.Kill();
+                    status.Value = "Exited";
+                }
+                catch (Exception e)
+                {
+                    status.Value = e.Message;
+                    return;
+                }
+            }
+            else
+            {
+                status.Value = "Waiting Trigger Process...";
             }
         }
         public async void start()
@@ -211,8 +223,10 @@ namespace AppBinder
             bool success = false;
             try
             {
+                status.Value = "Waiting Startup Delay";
                 await Task.Delay(start_delay);
-                success = binding_process.Start();
+                if (status.Value == "Waiting Startup Delay") success = binding_process.Start();
+                else return;
             }
             catch (Exception e)
             {
